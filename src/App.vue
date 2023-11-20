@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { useMyStore } from '@/store/myStore'
+const myStore = useMyStore()
+const countString = computed(() => {
+  return String(myStore.count)
+})
 </script>
 
 <template>
@@ -16,6 +22,13 @@ import HelloWorld from './components/HelloWorld.vue'
       </nav>
     </div>
   </header>
+
+  <div class="hello">
+    <button @click="myStore.increment">increment</button>
+    <p>Count: {{ myStore.count }}</p>
+    <p>DoubleCount: {{ myStore.double }}</p>
+    <p>Count(String): {{ countString }}</p>
+  </div>
 
   <RouterView />
 </template>
