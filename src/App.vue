@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import { useCount } from '@/store/count'
+import { useCount } from '@/stores/count'
 const countUp = useCount()
 const countString = computed(() => {
   return String(countUp.count)
@@ -43,4 +43,4 @@ const countString = computed(() => {
     </div>
     <RouterView />
   </section>
-</template>@/store/count
+</template>@/store/count@/store/count
