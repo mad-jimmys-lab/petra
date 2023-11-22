@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useMyStore = defineStore('myStore', {
+export const useCount = defineStore('count', {
   //保持したいデータ
   state: () => {
     return {
@@ -15,6 +15,9 @@ export const useMyStore = defineStore('myStore', {
   actions: {
     increment() {
       this.count++
+    },
+    clearCount() {
+      this.count = 0
     },
   },
 })
