@@ -1,5 +1,7 @@
 import { useCountStore } from '@/stores/modules/count'
 
-export {
+const store = {
   useCountStore
 }
+
+export default store;

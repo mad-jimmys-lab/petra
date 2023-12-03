@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useCountStore } from '@/stores/index'
-const countUp = useCountStore()
+import store from '@/stores/index'
+const countUp = store.useCountStore()
 const countString = computed(() => {
   return String(countUp.count)
 })
