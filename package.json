@@ -17,6 +17,8 @@
     "mmdc": "mmdc -i ./mermaid/screen-transition-diagram.mmd -o ./mermaid/screen-transition-diagram.png"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.19",
+    "@heroicons/vue": "^2.1.1",
     "axios": "^1.6.2",
     "firebase": "^10.8.0",
     "firebase-tools": "^13.2.1",
