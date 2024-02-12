@@ -1,13 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TopPage from '../pages/TopPage.vue'
+import LoginTop from '../pages/LoginTop.vue'
+import BookList from '../pages/BookList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { 
       path: '/',
-      name: 'TopPage',
-      component: TopPage 
+      name: 'LoginTop',
+      component: LoginTop 
+    },
+    { 
+      path: '/BookList',
+      name: 'BookList',
+      component: BookList 
     },
   ]
 })
