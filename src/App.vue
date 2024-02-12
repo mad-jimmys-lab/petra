@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+// import { ref } from 'vue'
 // import { getBookImage } from '@/services/liblary'
-import TestAxios from './components/TestAxios.vue'
-import TestPinia from './components/TestPinia.vue'
-const BOOK_IMAGE_URL = 'https://iss.ndl.go.jp/thumbnail/';
+// import TestAxios from './components/TestAxios.vue'
+// import TestPinia from './components/TestPinia.vue'
+// const BOOK_IMAGE_URL = 'https://iss.ndl.go.jp/thumbnail/';
 
 
-const isbnCode = ref();
-const bookImageUrl = ref();
-const searchBookImage = () => {
-  const url = BOOK_IMAGE_URL + isbnCode.value;
-  bookImageUrl.value = url;
-  console.log(bookImageUrl.value);
-  // getBookImage(isbnCode.value);
-  // console.log(testImage.value);
-}
+// const isbnCode = ref();
+// const bookImageUrl = ref();
+// const searchBookImage = () => {
+//   const url = BOOK_IMAGE_URL + isbnCode.value;
+//   bookImageUrl.value = url;
+//   console.log(bookImageUrl.value);
+// getBookImage(isbnCode.value);
+// console.log(testImage.value);
+// }
 
 // const testImage = computed(() => {
 //   return 'https://iss.ndl.go.jp/thumbnail/' + isbnCode.value;
@@ -23,7 +23,8 @@ const searchBookImage = () => {
 </script>
 
 <template>
-  <section class="h-screen bg-white dark:bg-gray-800 text-white">
+  <RouterView></RouterView>
+  <!-- <section class="h-screen bg-white dark:bg-gray-800 text-white">
 
     <TestAxios />
     <TestPinia />
@@ -52,5 +53,5 @@ const searchBookImage = () => {
       <img :src="bookImageUrl.value" alt="typescript">
     </div>
 
-  </section>
+  </section> -->
 </template>

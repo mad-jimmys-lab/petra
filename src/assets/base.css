@@ -49,6 +49,30 @@
     --color-text: var(--vt-c-text-dark-2);
   }
 }
+@font-face {
+  font-family: NotoSansJP;
+  src: url('fonts/NotoSansJP-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: NotoSansJP;
+  src: url('fonts/NotoSansJP-Bold.ttf') format('ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: NotoSansJP;
+  src: url('fonts/NotoSansJP-Black.ttf') format('ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: NotoSansJP;
+  src: url('fonts/NotoSansJP-Light.ttf') format('ttf');
+  font-weight: 300;
+  font-style: normal;
+}
 
 *,
 *::before,
@@ -67,6 +91,7 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
+    NotoSansJP,
     Inter,
     -apple-system,
     BlinkMacSystemFont,
