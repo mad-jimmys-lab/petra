@@ -9,31 +9,48 @@ import { useRouter } from 'vue-router';
 const email = ref('');
 const password = ref('');
 const router = useRouter();
-const errMsg = ref('');
+const errMsgs = ref<string[]>([]);
 const auth = getAuth();
 
-function login() {
+const isLoading = ref(false)
+
+const INVALID_EMAIL = "メールアドレスが不正です"
+const USER_NOT_FOUND = "ユーザーが見つかりません"
+const WRONG_PASSWORD = "パスワードが間違っています"
+const MISSING_PASSWORD = "パスワードを入力してください"
+
+function login(e: { target: { blur: () => void; }; }) {
+  isLoading.value = true
+  e.target.blur()
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(() => {
       console.log(auth.currentUser);
       router.push('/BookList');
+      isLoading.value = false
     })
     .catch((error) => {
       console.log(error.code)
+      console.log(errMsgs.value)
+      errMsgs.value = []
       switch (error.code) {
         //メールアドレスが違うエラー
         case "auth/invalid-email":
-          errMsg.value = "メールアドレスが不正です";
+          errMsgs.value.push(INVALID_EMAIL);
           break;
         //ユーザーが存在しないエラー
         case "auth/user-not-found":
-          errMsg.value = "ユーザーが見つかりません";
+          errMsgs.value.push(USER_NOT_FOUND);
           break;
         //パスワードが違うエラー
         case "auth/wrong-password":
-          errMsg.value = "パスワードが間違っています";
+          errMsgs.value.push(WRONG_PASSWORD);
+          break;
+        //パスワード未入力エラー
+        case "auth/missing-password":
+          errMsgs.value.push(MISSING_PASSWORD);
           break;
       }
+      isLoading.value = false
     });
 }
 
@@ -41,12 +58,16 @@ function login() {
 
 <template>
   <section class="h-screen">
+    <div :class="{ loading: isLoading }"></div>
     <!-- TODO:logoもコンポーネント化したい、画像でよい気もしている -->
     <div class="flex mb-10">
       <img class="logo" src="../assets/images/bookIcon.svg" alt="logo">&nbsp;
-      <h1 class="title text-black">Petra<span class="sub-title">Liblary&nbsp;Manager</span></h1>
+      <h1 class="title text-black">Petra<span class="sub-title">Library&nbsp;Manager</span></h1>
     </div>
     <div>
+      <div v-if="errMsgs" class="error-massage">
+        <p v-for="errMsg in errMsgs" :key="errMsg">{{ errMsg }}</p>
+      </div>
       <div class="mb-4">
         <input
           class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -54,15 +75,14 @@ function login() {
       </div>
       <div class="mb-4">
         <input
-          class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-6 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="password" type="password" placeholder="パスワード" v-model="password">
       </div>
-      <p v-if="errMsg">{{ errMsg }}</p>
     </div>
     <!-- TODO:ボタンはコンポーネント化する -->
     <button
       class="mt-8 bg-black hover:bg-black_hover text-white font-bold py-3 px-24 rounded focus:outline-none focus:shadow-outline"
-      @click="login">Login</button>
+      @click="login" id="loginBtn">Login</button>
   </section>
 </template>
 
@@ -73,6 +93,20 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  .loading {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    opacity: 0.75;
+    z-index: 1;
+  }
+
+  .error-massage {
+    color: red;
+  }
 }
 
 .logo {
