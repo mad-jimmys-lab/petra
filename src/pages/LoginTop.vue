@@ -5,6 +5,7 @@ import {
 } from 'firebase/auth';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import errorMassageUtil from '@/assets/ts/error-massage-util';
 
 const email = ref('');
 const password = ref('');
@@ -14,12 +15,7 @@ const auth = getAuth();
 
 const isLoading = ref(false)
 
-const INVALID_EMAIL = "メールアドレスが不正です"
-const USER_NOT_FOUND = "ユーザーが見つかりません"
-const WRONG_PASSWORD = "パスワードが間違っています"
-const MISSING_PASSWORD = "パスワードを入力してください"
-
-function login(e: { target: { blur: () => void; }; }) {
+function login(e: any) {
   isLoading.value = true
   e.target.blur()
   signInWithEmailAndPassword(auth, email.value, password.value)
@@ -35,19 +31,19 @@ function login(e: { target: { blur: () => void; }; }) {
       switch (error.code) {
         //メールアドレスが違うエラー
         case "auth/invalid-email":
-          errMsgs.value.push(INVALID_EMAIL);
+          errMsgs.value.push(errorMassageUtil.INVALID_EMAIL);
           break;
         //ユーザーが存在しないエラー
         case "auth/user-not-found":
-          errMsgs.value.push(USER_NOT_FOUND);
+          errMsgs.value.push(errorMassageUtil.USER_NOT_FOUND);
           break;
         //パスワードが違うエラー
         case "auth/wrong-password":
-          errMsgs.value.push(WRONG_PASSWORD);
+          errMsgs.value.push(errorMassageUtil.WRONG_PASSWORD);
           break;
         //パスワード未入力エラー
         case "auth/missing-password":
-          errMsgs.value.push(MISSING_PASSWORD);
+          errMsgs.value.push(errorMassageUtil.MISSING_PASSWORD);
           break;
       }
       isLoading.value = false
