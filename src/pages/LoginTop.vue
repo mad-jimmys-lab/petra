@@ -28,6 +28,7 @@ function login(e: any) {
       console.log(error.code)
       console.log(errMsgs.value)
       errMsgs.value = []
+      // TODO: 分岐に入らないエラーがありそう（firebase側の調査が必要）
       switch (error.code) {
         //メールアドレスが違うエラー
         case "auth/invalid-email":
