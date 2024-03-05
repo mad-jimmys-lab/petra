@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import errorMessageUtil from '@/assets/ts/error-message-util';
+import AppLogo from '@/components/common/AppLogo.vue';
 
 const email = ref('');
 const password = ref('');
 const router = useRouter();
 const errorMessageList = ref<string[]>([]);
 const auth = getAuth();
-
-const isLoading = ref(false)
+const isLoading = ref(false);
 
 function login(e: any) {
   isLoading.value = true
@@ -56,11 +53,7 @@ function login(e: any) {
 <template>
   <section class="h-screen">
     <div :class="{ loading: isLoading }"></div>
-    <!-- TODO:logoもコンポーネント化したい、画像でよい気もしている -->
-    <div class="flex mb-10">
-      <img class="logo" src="../assets/images/bookIcon.svg" alt="logo">&nbsp;
-      <h1 class="title text-black">Petra<span class="sub-title">Library&nbsp;Manager</span></h1>
-    </div>
+    <AppLogo />
     <div>
       <div v-if="errorMessageList" class="error-message">
         <p v-for="(errorMessage, index) in errorMessageList" :key="index">{{ errorMessage }}</p>
@@ -103,23 +96,6 @@ section {
 
   .error-message {
     color: red;
-  }
-}
-
-.logo {
-  max-width: 5rem;
-}
-
-.title {
-  font-family: 'NotoSansJP';
-  font-weight: bold;
-  font-size: 5rem;
-
-  .sub-title {
-    font-family: 'NotoSansJP';
-    font-weight: 300;
-    font-size: 2rem;
-    margin-left: 8px;
   }
 }
 </style>
