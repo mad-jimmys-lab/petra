@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import errorMessageUtil from '@/assets/ts/error-message-util';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
 import AppLogo from '@/components/common/AppLogo.vue';
+import ButtonBasic from '@/components/common/ButtonBasic.vue';
+
+import errorMessageUtil from '@/assets/ts/error-message-util';
 
 const email = ref('');
 const password = ref('');
@@ -12,7 +15,7 @@ const errorMessageList = ref<string[]>([]);
 const auth = getAuth();
 const isLoading = ref(false);
 
-function login(e: any) {
+const login = (e: { target: HTMLButtonElement }) => {
   isLoading.value = true
   e.target.blur()
   signInWithEmailAndPassword(auth, email.value, password.value)
@@ -55,7 +58,7 @@ function login(e: any) {
     <div :class="{ loading: isLoading }"></div>
     <AppLogo />
     <div>
-      <div v-if="errorMessageList" class="error-message">
+      <div v-if="errorMessageList" class="text-red-400">
         <p v-for="(errorMessage, index) in errorMessageList" :key="index">{{ errorMessage }}</p>
       </div>
       <div class="mb-4">
@@ -69,15 +72,13 @@ function login(e: any) {
           id="password" type="password" placeholder="パスワード" v-model="password">
       </div>
     </div>
-    <!-- TODO:ボタンはコンポーネント化する -->
-    <button
-      class="mt-8 bg-black hover:bg-black_hover text-white font-bold py-3 px-24 rounded focus:outline-none focus:shadow-outline"
-      @click="login" id="loginBtn">Login</button>
+    <ButtonBasic title="Login" :click-event="login" />
   </section>
 </template>
 
+<!--  TODO:styleを共通化するかしないかは検討中（scopedで影響範囲閉じていれば共通化しなくても良い気がしてきた） -->
+
 <style scoped lang="scss">
-// TODO:styleは共通化予定,fontsもどうにかしたい
 section {
   display: flex;
   flex-direction: column;
@@ -92,10 +93,6 @@ section {
     background-color: #ffffff;
     opacity: 0.75;
     z-index: 1;
-  }
-
-  .error-message {
-    color: red;
   }
 }
 </style>
