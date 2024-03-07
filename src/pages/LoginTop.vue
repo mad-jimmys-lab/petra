@@ -6,14 +6,14 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import AppLogo from '@/components/common/AppLogo.vue';
 import ButtonBasic from '@/components/common/ButtonBasic.vue';
 
-import errorMessageUtil from '@/assets/ts/error-message-util';
+import errorMessage from '@/assets/ts/error-message';
 
-const email = ref('');
-const password = ref('');
+const email = ref<string>('');
+const password = ref<string>('');
 const router = useRouter();
 const errorMessageList = ref<string[]>([]);
 const auth = getAuth();
-const isLoading = ref(false);
+const isLoading = ref<boolean>(false);
 
 const login = (e: { target: HTMLButtonElement }) => {
   isLoading.value = true
@@ -26,25 +26,24 @@ const login = (e: { target: HTMLButtonElement }) => {
     })
     .catch((error) => {
       console.log(error.code)
-      console.log(errorMessageList.value)
       errorMessageList.value = []
       // TODO: 分岐に入らないエラーがありそう（firebase側の調査が必要）
       switch (error.code) {
-        //メールアドレスが違うエラー
+        // メールアドレスが違うエラー
         case "auth/invalid-email":
-          errorMessageList.value.push(errorMessageUtil.INVALID_EMAIL);
+          errorMessageList.value.push(errorMessage.INVALID_EMAIL);
           break;
-        //ユーザーが存在しないエラー
+        // ユーザーが存在しないエラー
         case "auth/user-not-found":
-          errorMessageList.value.push(errorMessageUtil.USER_NOT_FOUND);
+          errorMessageList.value.push(errorMessage.USER_NOT_FOUND);
           break;
-        //パスワードが違うエラー
+        // パスワードが違うエラー
         case "auth/wrong-password":
-          errorMessageList.value.push(errorMessageUtil.WRONG_PASSWORD);
+          errorMessageList.value.push(errorMessage.WRONG_PASSWORD);
           break;
-        //パスワード未入力エラー
+        // パスワード未入力エラー
         case "auth/missing-password":
-          errorMessageList.value.push(errorMessageUtil.MISSING_PASSWORD);
+          errorMessageList.value.push(errorMessage.MISSING_PASSWORD);
           break;
       }
       isLoading.value = false
