@@ -1,0 +1,12 @@
+/**
+ログイン画面のスタイルを共通化 以下に記載していく
+基本的にはtailwind CSSで対応するが、細かなスタイルや画面独自のものはこのファイルにまとめて共通化する。
+※ファイルをいじった際は影響範囲は必ず確認すること（表示揺れやバグを起こさないように）
+**/
+.login-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}

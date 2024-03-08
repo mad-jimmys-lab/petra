@@ -6,5 +6,17 @@
     "activityBar.foreground": "#fff",
     "activityBar.activeBackground": "#38A975",
     "activityBar.inactiveForeground": "#38A975"
+  },
+  // デフォルトのコード整形
+  "editor.formatOnSave": true,
+  // 改行コードLF指定
+  "files.eol": "\n",
+  // 末尾に改行を挿入
+  "files.insertFinalNewline": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
