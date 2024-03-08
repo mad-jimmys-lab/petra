@@ -3,7 +3,6 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import LoginTop from '../pages/LoginTop.vue'
 import BookList from '../pages/BookList.vue'
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -26,24 +25,24 @@ const getCurrentUser = () => {
     const removeListener = onAuthStateChanged(
       getAuth(),
       (user) => {
-        removeListener();
-        resolve(user);
+        removeListener()
+        resolve(user)
       },
       reject
-    );
-  });
-};
+    )
+  })
+}
 
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (await getCurrentUser()) {
-      next();
+      next()
     } else {
-      next('/');
+      next('/')
     }
   } else {
-    next();
+    next()
   }
-});
+})
 
 export default router

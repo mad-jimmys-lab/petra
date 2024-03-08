@@ -1,6 +1,12 @@
 const Flag = {
-  OFF: '0',
-  ON: '1'
+  OFF: {
+    code: '0',
+    name: 'OFF'
+  },
+  ON: {
+    code: '1',
+    name: 'ON'
+  }
 } as const
 
 export type Flag = (typeof Flag)[keyof typeof Flag]
