@@ -54,7 +54,7 @@ const login = (e: { target: HTMLButtonElement }) => {
 <template>
   <section class="login-top h-screen">
     <div :class="{ loading: isLoading }"></div>
-    <AppLogo />
+    <AppLogo page="login" />
     <div>
       <div v-if="errorMessageList" class="text-error">
         <p v-for="(errorMessage, index) in errorMessageList" :key="index">{{ errorMessage }}</p>
