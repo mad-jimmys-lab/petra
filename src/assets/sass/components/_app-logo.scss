@@ -1,24 +1,45 @@
 .app-logo {
+  font-family: 'NotoSansJP';
 
-  .logo {
+// LoginTopのstyle
+  .login-logo {
     max-width: 3rem;
   }
-
-  .title {
-    font-family: 'NotoSansJP';
+  .login-title {
+    font-size: 3rem;
     font-weight: bold;
+    line-height: 1;
 
-    .sub-title {
-      font-family: 'NotoSansJP';
-      font-weight: 300;
+    .login-sub-title {
       font-size: 2rem;
+      font-weight: 300;
+      margin-left: 8px;
+    }
+  }
+
+// MainHeaderのstyle
+  .header-logo {
+    max-width: 2rem;
+  }
+  .header-title {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+
+    .header-sub-title {
+      font-size: 1rem;
+      font-weight: 300;
       margin-left: 8px;
     }
   }
 
   @media (min-width: 768px) {
-    .logo {
+    .login-logo {
       max-width: 4.5rem;
+    }
+
+    .login-title {
+      font-size: 4.5rem;
     }
   }
 }
