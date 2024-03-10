@@ -1,0 +1,42 @@
+// TODO:全体的にリファクタ予定
+.main-header {
+  background-color: rgba($color:#ffffff, $alpha: 0.75);
+  width:100vw;
+  height: 64px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .header-item {
+      position: absolute;
+      right: 1rem;
+    }
+  }
+
+  .header-menu {
+    background-color: rgba($color:#f1f1f1, $alpha: 0);
+
+    ul {
+      background-color: rgba($color:#ffffff, $alpha: 0.75);
+    }
+  }
+
+  .header-link:hover {
+    opacity: 0.25;
+    transition: .2s;
+  }
+
+  @media (min-width: 768px) {
+    .header-menu > ul {
+      margin-left: auto;
+      max-width: 8rem;
+    }
+  }
+}
