@@ -4,11 +4,17 @@ import { Cog6ToothIcon, Bars3Icon } from '@heroicons/vue/24/outline'
 import AppLogo from './AppLogo.vue'
 import AuthorityRole from '@/assets/ts/defs/authority-role'
 
-const authorityRole = ref('')
+const props = defineProps({
+  authorityRole: {
+    type: String,
+    required: true
+  }
+})
+
 const isOpen = ref(false)
 
 const hasAuthorityByAdmin = computed<boolean>(() => {
-  return authorityRole.value === AuthorityRole.ADMIN.name
+  return props.authorityRole === AuthorityRole.ADMIN.name
 })
 
 const openPanel = (): void => {

@@ -2,19 +2,30 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import MainHeader from './MainHeader.vue'
 
 const meta = {
-  title: 'Example/MainHeader',
+  title: 'Modules/MainHeader',
   component: MainHeader,
-  render: (args: any) => ({
-    components: { MainHeader },
-    setup() {
-      return { args }
-    },
-    template: '<main-header />'
-  }),
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    authorityRole: {
+      control: { type: 'select' },
+      options: ['admin', 'user']
+    }
+  },
+  args: {
+    authorityRole: 'admin'
+  }
 } satisfies Meta<typeof MainHeader>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Login: Story = {}
+export const Admin: Story = {
+  args: {
+    authorityRole: 'admin'
+  }
+}
+export const User: Story = {
+  args: {
+    authorityRole: 'user'
+  }
+}

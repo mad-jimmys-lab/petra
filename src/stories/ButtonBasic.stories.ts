@@ -4,7 +4,7 @@ import ButtonBasic from './ButtonBasic.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Example/ButtonBasic',
+  title: 'Common/ButtonBasic',
   component: ButtonBasic,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

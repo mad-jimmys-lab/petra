@@ -2,10 +2,9 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import AppLogo from './AppLogo.vue'
 
 const meta = {
-  title: 'Example/AppLogo',
+  title: 'Common/AppLogo',
   component: AppLogo,
   tags: ['autodocs'],
-
   args: {
     page: 'string'
   }
