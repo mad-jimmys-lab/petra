@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Cog6ToothIcon, Bars3Icon } from '@heroicons/vue/24/outline'
-import AppLogo from '../common/AppLogo.vue'
+import AppLogo from './AppLogo.vue'
 import AuthorityRole from '@/assets/ts/defs/authority-role'
 
-// TODO: 以下、権限はpropsで渡すのではなくstoreで持つ情報
 const props = defineProps({
   authorityRole: {
     type: String,
