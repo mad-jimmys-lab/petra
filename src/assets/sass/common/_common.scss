@@ -1,0 +1,20 @@
+/**
+アプリケーション全体で共通的に使えるスタイルを以下に記載していく
+基本的にはtailwind CSSで対応する。対応できなそうなものはここに記載する。
+※ファイルをいじった際は影響範囲は必ず確認すること（表示揺れやバグを起こさないように）
+**/
+
+// ローデイング時やAPI呼び出し時など二度押し防止処理の時に使う
+.loading {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+// エラーメッセージや警告文などで使用
+.text-error {
+  color: $error;
+}
