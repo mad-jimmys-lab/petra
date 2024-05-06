@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import LoginTop from '../pages/LoginTop.vue'
 import BookList from '../pages/BookList.vue'
+import UserRegistration from '../pages/userRegistration.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,6 +11,11 @@ const router = createRouter({
       path: '/',
       name: 'LoginTop',
       component: LoginTop
+    },
+    {
+      path: '/UserRegistration',
+      name: 'UserRegistration',
+      component: UserRegistration
     },
     {
       path: '/BookList',
