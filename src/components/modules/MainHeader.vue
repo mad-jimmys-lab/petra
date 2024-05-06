@@ -3,6 +3,8 @@ import { computed, ref } from 'vue'
 import { Cog6ToothIcon, Bars3Icon } from '@heroicons/vue/24/outline'
 import AppLogo from '../common/AppLogo.vue'
 import AuthorityRole from '@/assets/ts/defs/authority-role'
+import { getAuth, signOut } from 'firebase/auth'
+import { useRouter } from 'vue-router'
 
 // TODO: 以下、権限はpropsで渡すのではなくstoreで持つ情報
 const props = defineProps({
@@ -12,6 +14,8 @@ const props = defineProps({
   }
 })
 
+const auth = getAuth()
+const router = useRouter()
 const isOpen = ref(false)
 
 const hasAuthorityByAdmin = computed<boolean>(() => {
@@ -20,6 +24,11 @@ const hasAuthorityByAdmin = computed<boolean>(() => {
 
 const openPanel = (): void => {
   isOpen.value = !isOpen.value
+}
+const logout = (): void => {
+  signOut(auth)
+  console.log('logout complete')
+  router.push('/')
 }
 </script>
 
@@ -46,13 +55,16 @@ const openPanel = (): void => {
         <ul class="p-4 text-center md:text-left">
           <!-- TODO:router-linkはpathが出来次第修正予定 -->
           <li class="header-link mb-2">
-            <router-link to="/">ユーザー登録</router-link>
+            <router-link to="/UserRegistration">ユーザー登録</router-link>
           </li>
           <li class="header-link mb-2">
             <router-link to="/">ユーザー管理</router-link>
           </li>
-          <li class="header-link">
+          <li class="header-link mb-2">
             <router-link to="/">書籍登録</router-link>
+          </li>
+          <li class="header-link" @click="logout">
+            <button class="text-error">ログアウト</button>
           </li>
         </ul>
       </div>
