@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 import "firebase/auth";
 
 const firebaseConfig = {
@@ -16,3 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // アナリティクスの初期化
 getAnalytics(app);
+
+const db = getFirestore(app);
+export { db };

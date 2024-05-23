@@ -20,7 +20,7 @@ const header = computed(() => {
   <div class="app-logo flex" :class="{ 'mb-10': login }">
     <img
       :class="{ 'login-logo': login, 'header-logo': header }"
-      src="../../assets/images/bookIcon.svg"
+      src="../assets/images/bookIcon.svg"
       alt="app-logo"
     />&nbsp;
     <h1 class="text-black" :class="{ 'login-title': login, 'header-title': header }">
