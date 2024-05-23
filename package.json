@@ -50,6 +50,7 @@
     "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-vue": "^9.17.0",
+    "git-cz": "^4.9.0",
     "npm-run-all2": "^6.1.1",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
