@@ -1,0 +1,8 @@
+@use 'variables/base' as variables;
+@use 'common/base' as common;
+@use 'pages/base' as pages;
+@use 'components/base' as components;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
