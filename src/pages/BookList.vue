@@ -9,8 +9,27 @@ const authorityRole = ref('admin')
 <template>
   <MainHeader :authority-role="authorityRole" />
   <section class="book-list">
-    <body class="h-screen" style="background-color: #f1f1f1; padding-top: 64px">
+    <body class="h-screen">
       test
     </body>
   </section>
 </template>
+
+<style lang="scss" scoped>
+@use '@/assets/scss/variables/colors' as colors;
+@use '@/assets/scss/variables/media' as media;
+
+.book-list {
+  background-color: colors.$bg-main;
+  padding-top: 64px;
+
+  // mediaquery test
+  @include media.mq(tab) {
+    background-color: aqua;
+  }
+
+  @include media.mq(pc) {
+    background-color: red;
+  }
+}
+</style>

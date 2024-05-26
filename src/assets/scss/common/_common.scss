@@ -3,6 +3,7 @@
 基本的にはtailwind CSSで対応する。対応できなそうなものはここに記載する。
 ※ファイルをいじった際は影響範囲は必ず確認すること（表示揺れやバグを起こさないように）
 **/
+@use '../variables/colors' as colors;
 
 // ローデイング時やAPI呼び出し時など二度押し防止処理の時に使う
 .loading {
@@ -16,9 +17,9 @@
 
 // エラーメッセージや警告文などで使用
 .text-error {
-  color: $error;
+  color: colors.$error;
 }
 
 .bg-main {
-  background-color: $bg-main;
+  background-color: colors.$bg-main;
 }
