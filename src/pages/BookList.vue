@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import MainHeader from '@/components/modules/MainHeader.vue'
+import PageHeading from '@/components/common/PageHeading.vue'
+
+const pageHeading = '書籍一覧'
 
 // 以下、権限はfirebaseから取得してくる
 const authorityRole = ref('admin')
@@ -10,7 +13,7 @@ const authorityRole = ref('admin')
   <MainHeader :authority-role="authorityRole" />
   <section class="book-list">
     <body class="h-screen">
-      test
+      <PageHeading :page="pageHeading"></PageHeading>
     </body>
   </section>
 </template>
