@@ -1,3 +1,11 @@
+---
+name: Custom Pull Request template
+about: ''
+title: ''
+labels: ''
+assignees: ''
+---
+
 ## 概要
 
 このセクションでは、このPRの目的と概要を簡潔に説明してください。
@@ -31,5 +39,3 @@
 ## スクリーンショット
 
 このセクションでは、スクリーンショットを記載してください。
-
-- 関連Issue: #123
